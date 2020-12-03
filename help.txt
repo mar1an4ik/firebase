@@ -1,0 +1,36 @@
+https://www.codaffection.com/react/react-firebase-crud/#Retrieve_and_Display_Records_from_Firebase
+https://www.youtube.com/watch?v=7xf0Kz6WGu8&t=5335s
+
+
+ const handleLogIn=()=>{
+    fire.auth().signInWithEmailAndPassword(email,password)
+        .then((result)=>{console.log("SuCCES")})
+        .catch((error)=>{console.log(error)})
+    }
+__________________
+   const handleRegistration=()=>{
+        fire.auth().createUserWithEmailAndPassword(email,password)
+            .then((result)=>{console.log("SuCCES")})
+            .catch((error)=>{console.log(error)})
+
+    }
+_______________________
+  const handleChange=({target :{value,id}})=>{
+
+        if (id=="email") setEmail(value);
+        if (id=="password") setPassword(value);
+    }
+______________
+
+    const authChecker = () => {
+        firebaseDb.auth().onAuthStateChanged((user) => {
+            if (user) setUser(user)
+            else setUser(null)
+        })
+    }
+
+    useEffect(() => {
+        authChecker();
+        console.log(user)
+    },)
+_____________
